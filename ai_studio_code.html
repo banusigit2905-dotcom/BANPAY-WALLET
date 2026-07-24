@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANPAY WALLET</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK (Compat Version untuk kemudahan) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <!-- Layar Login -->
+    <div id="login-screen" class="container">
+        <h1>BANPAY</h1>
+        <p>Silakan login untuk masuk ke dompet digital Anda</p>
+        <button onclick="loginGoogle()" class="btn-main">Login dengan Google</button>
+    </div>
+
+    <!-- Layar Utama (Hidden by default) -->
+    <div id="app-screen" class="container" style="display:none;">
+        <div class="header">
+            <div class="user-info">
+                <span id="user-name">User</span>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+            </div>
+            <p>Saldo Anda</p>
+            <h1 id="saldo">Rp 0</h1>
+        </div>
+
+        <div class="actions">
+            <button onclick="updateSaldo(10000, 'Top Up')">Top Up 10rb</button>
+            <button onclick="updateSaldo(50000, 'Top Up')">Top Up 50rb</button>
+            <button onclick="transferPrompt()" class="btn-red">Transfer</button>
+        </div>
+
+        <h3>Riwayat Transaksi</h3>
+        <ul id="history"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
